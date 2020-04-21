@@ -3,7 +3,9 @@
 #
 # SPDX-License-Identifier: GPL-2.0
 #
+export PATH:=$(PATH):$(BUILD_TOPDIR)/toolchain-mips_24kc_gcc-5.4.0_musl/bin
 
+export MAKECMD=make --silent ARCH=mips CROSS_COMPILE=mips-openwrt-linux-uclibc-
 SHELL = bash
 
 HOSTARCH := $(shell uname -m |        \
@@ -50,8 +52,8 @@ export SUB_MAKE_CMD = $(MAKE) --silent --no-print-directory \
 # IMG_LZMA =
 
 # Define _absolute_ path to your toolchain directory, for example:
-# export TOOLCHAIN_DIR:=/home/user/toolchain-mips_24kc_gcc-5.4.0_musl-1.1.15
-# export PATH:=$(TOOLCHAIN_DIR)/bin:$(PATH)
+export TOOLCHAIN_DIR:=/home/xzc/9531/u-boot_mod/toolchain-mips_24kc_gcc-5.4.0_musl
+export PATH:=$(TOOLCHAIN_DIR)/bin:$(PATH)
 
 ifndef CROSS_COMPILE
   CROSS_COMPILE = mips-openwrt-linux-musl-
@@ -290,7 +292,7 @@ yuncore_t830 \
 whqx_e600g_v2 \
 whqx_e600gac_v2 \
 zbtlink_zbt-we1526:
-	@$(call build,256,1,ETH_CONFIG=_s27)
+	@$(call build,123,1,ETH_CONFIG=_s27)
 
 tp-link_tl-wdr3600_v1 \
 tp-link_tl-wdr43x0_v1 \
